@@ -34,9 +34,9 @@ from log import _log as log
 #         await self.app['dispatch']
 
 
-@TaskDecorator(10)
-async def task_test(app, a_name='Anton', a='Fullname'):
-    log.debug('Op Jigurda {0} {1}'.format(a_name, a))
+# @TaskDecorator(10)
+# async def task_test(app, a_name='Anton', a='Fullname'):
+#     log.debug('Op Jigurda {0} {1}'.format(a_name, a))
 
 
 @TaskDecorator()

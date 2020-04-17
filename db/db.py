@@ -61,9 +61,9 @@ def prepare_detail_currencies(currencies, detail_bank_data):
                                      float(cur_bank[0].get('buy')), 4),
                         'sale': round(float(cur_bank[1].get('sale')) -
                                       float(cur_bank[0].get('sale')), 4),
-                        'exchange_rate': round(float(
-                            cur_bank[1].get('exchange_rate')
-                        ) - float(cur_bank[0].get('exchange_rate')), 4),
+                        # 'exchange_rate': round(float(
+                        #     cur_bank[1].get('exchange_rate')
+                        # ) - float(cur_bank[0].get('exchange_rate')), 4),
                     }
                 })
             elif len(cur_bank) == 0:
@@ -71,7 +71,7 @@ def prepare_detail_currencies(currencies, detail_bank_data):
                     cur: {
                         'buy': round(float(0), 4),
                         'sale': round(float(0), 4),
-                        'exchange_rate': round(float(0), 4),
+                        # 'exchange_rate': round(float(0), 4),
                     }
                 })
             elif len(cur_bank) == 1:
@@ -79,7 +79,7 @@ def prepare_detail_currencies(currencies, detail_bank_data):
                     cur: {
                         'buy': round(float(cur_bank[0].get('buy')), 4),
                         'sale': round(float(cur_bank[0].get('sale')), 4),
-                        'exchange_rate': round(float(cur_bank[0].get('exchange_rate')), 4),
+                        # 'exchange_rate': round(float(cur_bank[0].get('exchange_rate')), 4),
                     }
                 })
         res.update({bank: bank_d})
@@ -106,7 +106,7 @@ async def get_exchange_rate(connection):
                 "currency_name": res['currency_name'],
                 "buy": res['buy'],
                 "sale": res['sale'],
-                "exchange_rate": res['exchange_rate']
+                # "exchange_rate": res['exchange_rate']
             }
         )
     for i in banks:
