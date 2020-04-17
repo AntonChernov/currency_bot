@@ -16,8 +16,8 @@ BANK_API = {
         'field': 'cc',
         'currency_names': ('EUR', 'USD'), # currency_names tuple and must be lice in ISO 4217
         'buy_field': None,
-        'sale_field': None,
-        'exchange_rate_field': 'rate',
+        'sale_field': 'rate',
+        # 'exchange_rate_field': 'rate', # Field not use any more and should be delete
         'date': 'exchangedate',
         'text': 'txt'
     },
@@ -29,7 +29,7 @@ BANK_API = {
         'currency_names': ('EUR', 'USD'),
         'buy_field': 'buy',
         'sale_field': 'sale',
-        'exchange_rate_field': None,
+        # 'exchange_rate_field': None, # Field not use any more and should be delete
         'date': None,
         'text': None
     },
@@ -42,7 +42,7 @@ BANK_API = {
         'currency_names': ('EUR', 'USD'),
         'buy_field': 'bid',
         'sale_field': 'ask',
-        'exchange_rate_field': None,
+        # 'exchange_rate_field': None, # Field not use any more and should be delete
         'date': None,
         'text': 'currency'
     },

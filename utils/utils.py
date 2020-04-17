@@ -37,7 +37,7 @@ class GetAndPreparedBanksData(object):
                 'currency_name': item.get(dict_map.get('field')),
                 'buy': item.get(dict_map.get('buy_field'), 0),
                 'sale': item.get(dict_map.get('sale_field'), 0),
-                'exchange_rate': item.get(dict_map.get('exchange_rate_field'), 0),
+                # 'exchange_rate': item.get(dict_map.get('exchange_rate_field'), 0),
             } for item in items
         ]
 
@@ -53,13 +53,17 @@ class GetAndPreparedBanksData(object):
             sale = 'Currency sale: ' + str(
                 cur.get(dict_map.get('sale_field'))) + '\n' if dict_map.get(
                 'sale_field') else ''
-            ex_ch_field = 'Currency exchange: ' + str(
-                cur.get(dict_map.get('exchange_rate_field'))) + '\n' if dict_map.get(
-                'exchange_rate_field') else ''
+            # ex_ch_field = 'Currency exchange: ' + str(
+            #     cur.get(dict_map.get('exchange_rate_field'))) + '\n' if dict_map.get(
+            #     'exchange_rate_field') else ''
 
-            res += '{0}{1}{2}{3}{4} \n'.format(
-                text, currency_name,
-                ex_ch_field, buy, sale)
+            res += '{0}{1}{2}{3} \n'.format(
+                text,
+                currency_name,
+                # ex_ch_field,
+                buy,
+                sale
+            )
         return res
 
     def parse_json(self, bank_map, json_item, return_type='str'):

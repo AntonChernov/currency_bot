@@ -46,7 +46,7 @@ class CheckRate(web.View):
                     "currency_name": res['currency_name'],
                     "buy": res['buy'],
                     "sale": res['sale'],
-                    "exchange_rate": res['exchange_rate']
+                    # "exchange_rate": res['exchange_rate']
                 }
             )
         return web.json_response(data=data)
