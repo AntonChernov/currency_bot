@@ -8,4 +8,5 @@ ROUTERS = [
     web.get('/api/currencies', api.GetCurrenciesFromRegBanks, name='cur'), #/api/currencies?type=dict
     web.get('/api/exchange', api.ExchangeRate, name='exchange'),
     web.get('/api/check-rate', api.CheckRate, name='check'),
+    web.get('/api/cdts', api.CheckDictToStr, name='cdts'),
 ]

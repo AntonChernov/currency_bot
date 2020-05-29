@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import datetime
+
 from aiohttp import web
 from aiohttp.abc import StreamResponse
 from aiohttp.hdrs import METH_POST, METH_DELETE, METH_GET, METH_PATCH, METH_PUT, METH_OPTIONS
@@ -8,6 +10,23 @@ from marshmallow import ValidationError
 from utils.schemes_utils import AbstractScheme
 
 from log import _log as log
+
+
+def currency_rate_dict_to_str(obj_dict):
+    res = ''
+    for bank in obj_dict:
+        res += '{0} {1} \n'.format(':date:', datetime.datetime.now().isoformat())
+        res += '{0} Bank name: {1}\n'.format(':bank:', bank)
+        for b_data in obj_dict[bank]:
+            # res += '{0}Currency: {1}\n'.format('_'*1, b_data)
+            res += '{0}Currency: {1}\n'.format(':moneybag:', b_data)
+            # res += '{0}Sale price: {1}\n'.format('_'*2, obj_dict[bank][b_data]['sale'])
+            res += '{0}Sale price: {1}\n'.format(':money_mouth_face:', obj_dict[bank][b_data]['sale'])
+            # res += '{0}Buy price: {1}\n\n'.format('_'*2, obj_dict[bank][b_data]['buy'])
+            res += '{0}Buy price: {1}\n\n'.format(':money_mouth_face:', obj_dict[bank][b_data]['buy'])
+        res += '+'*20
+        res += '\n'
+    return res
 
 
 class BaseAPIView(web.View):

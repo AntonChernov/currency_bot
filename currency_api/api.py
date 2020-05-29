@@ -7,6 +7,7 @@ from aiohttp import web
 from db.db import save_data, get_exchange_rate
 from log import _log as log
 from utils.utils import GetAndPreparedBanksData
+from utils.views_utils import currency_rate_dict_to_str
 
 
 class PingPongHandler(web.View):
@@ -57,3 +58,11 @@ class ExchangeRate(web.View):
     async def get(self):
         data = await get_exchange_rate(self.request.app['db_currency'])
         return web.json_response(data=data)
+
+
+class CheckDictToStr(web.View):
+
+    async def get(self):
+        data = await get_exchange_rate(self.request.app['db_currency'])
+        res = currency_rate_dict_to_str(data)
+        return web.Response(body=res)
