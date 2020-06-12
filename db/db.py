@@ -32,9 +32,12 @@ async def save_data(connection, data):
 
                 }
             )
+            item_val['buy'] = round(float(item_val.get('buy', 0)), 3)
+            item_val['sale'] = round(float(item_val.get('sale', 0)), 3)
             log.debug(res)
             if res and res['_id']:
                 await connection.update_one({'_id': res['_id']}, {'$set': item_val})
+                # log.debug(f'item val {item_val}')
                 log.debug('Updated one item: {0}'.format(res['_id']))
             else:
                 ins = await connection.insert_one(item_val)

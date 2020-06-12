@@ -9,4 +9,5 @@ ROUTERS = [
     web.get('/api/exchange', api.ExchangeRate, name='exchange'),
     web.get('/api/check-rate', api.CheckRate, name='check'),
     web.get('/api/cdts', api.CheckDictToStr, name='cdts'),
+    # web.get('/api/median', api.CheckDictToStr, name='median'),
 ]

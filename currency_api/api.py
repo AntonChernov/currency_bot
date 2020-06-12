@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+import calendar
 
 import aiohttp
 from aiohttp import web
@@ -64,5 +65,31 @@ class CheckDictToStr(web.View):
 
     async def get(self):
         data = await get_exchange_rate(self.request.app['db_currency'])
+        res = currency_rate_dict_to_str(data)
+        return web.Response(body=res)
+
+
+class MonthMedian(web.View):
+
+    async def get(self):
+        year_month = self.request.rel_url.query.get('date')
+        _, end_date = calendar.monthrange(
+            int(datetime.datetime.strptime(year_month, '%Y-%m').year),
+            int(datetime.datetime.strptime(year_month, '%Y-%m').month)
+        )
+        from_date = datetime.datetime.strptime(year_month, '%Y-%m-%d')
+        to_date = datetime.datetime.strptime(year_month, '%Y-%m-%d')
+        pipe_line = self.request.app['db_currency'].find(
+            {
+                'date': {
+                    '$gte': from_date.strftime('%Y-%m-%d'),
+                    '$lte': to_date.replace(day=end_date).strftime('%Y-%m-%d')
+                }
+            }
+
+        )
+        data = []
+        async for item in pipe_line:
+            pass
         res = currency_rate_dict_to_str(data)
         return web.Response(body=res)
