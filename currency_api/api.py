@@ -89,6 +89,7 @@ class MonthMedian(web.View):
 
         )
         data = []
+        """db.banks.find({ buy: { $type: "double" }, sale:{$type: "double"} })"""
         async for item in pipe_line:
             pass
         res = currency_rate_dict_to_str(data)
