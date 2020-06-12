@@ -71,7 +71,7 @@ DATABASE = {
 
 #### Task block
 TASKS_SETTING = {
-    'delay': 600,
+    'delay': 600, # Default task sleep :) time
     'include': [
         'tasks.tasks'
     ]
