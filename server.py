@@ -4,13 +4,11 @@ import asyncio
 import os
 
 import sys
-import importlib.util
 
 import aiohttp_jinja2
 import jinja2
 import uvloop
 from aiohttp import web
-from aiojobs.aiohttp import setup
 
 from db.db import db_currency
 

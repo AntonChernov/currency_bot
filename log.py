@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
 
-import aiohttp
-
 
 def initiate_logging(custom_log_format=None, custom_logger=None, log_level=None):
 
@@ -17,5 +15,6 @@ def initiate_logging(custom_log_format=None, custom_logger=None, log_level=None)
     ch.setFormatter(f)
     log.addHandler(ch)
     return log
+
 
 _log = initiate_logging()
