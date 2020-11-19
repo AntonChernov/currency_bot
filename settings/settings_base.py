@@ -63,7 +63,7 @@ REDIS_CLUSTER = [
 REDIS_CLUSTER_MODE = False
 
 DATABASE = {
-    'client': 'mongodb://localhost:27017',
+    'client': os.environ.get("MONGO_DB_URI", "mongodb://localhost:27017"),
     # 'client': 'mongodb://host1,host2/?replicaSet=my-replicaset-name',
     'db_name': 'currency',
     'collection': 'banks'
