@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  currency:
+    container_name: currency_app
+    build: .
+    restart: on-failure
+    environment:
+      MONGO_DB_URI: mongodb
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.4.1-bionic
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app:ro
+    ports:
+      - "27017:27017"
